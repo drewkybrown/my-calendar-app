@@ -2,9 +2,9 @@
 // It also renders a list of events for the current month.
 // This is my main component for this project.
 
-import React, { useState } from "react"; // React hooks
+import React, { useState } from "react"; // React hooks allow you to use state and other React features without writing a class.
 import CalendarCell from "./CalendarCell"; // CalendarCell.js is a component that renders a single cell in the calendar.
-import CaatgorySelector from "./CategorySelector"; // CategorySelector.js is a component that renders a dropdown menu for selecting a category.
+import CategorySelector from "./CategorySelector"; // CategorySelector.js is a component that renders a dropdown menu for selecting a category.
 
 const daysOfWeek = [
   "Sunday",
@@ -37,4 +37,24 @@ export default function Calendar() {
       // `handleCellClick` is a function that takes a date as a parameter.
     }
   };
+
+  return (
+    <div>
+      <CategorySelector setSelectedCategory={setSelectedCategory} />
+      {/* `CategorySelector` is a component that renders a dropdown menu for selecting a category. */}
+      <div className="calendar-grid">
+        {dates.map((date, index) => (
+          /* `dates` is an array of dates in the month. */
+          <CalendarCell
+            key={index}
+            day={daysOfWeek[index % 7]}
+            date={date}
+            color={cellColors[date]}
+            onClick={() => handleCellClick(date)}
+          />
+          // `CalendarCell` is a component that renders a single cell in the calendar.
+        ))}
+      </div>
+    </div>
+  );
 }

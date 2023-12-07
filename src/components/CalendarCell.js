@@ -1,6 +1,7 @@
 // CalendarCell.js
 // Path: src/components/CalendarCell.js
 // Compare this snippet from src/components/Calendar.js:
+// represents a single cell in the calendar.
 import React from "react"; // React hooks allow you to use state and other React features without writing a class.
 
 // export default function CalendarCell
